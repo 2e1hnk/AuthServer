@@ -14,50 +14,18 @@
      	
     <div class="container">
      
-     	<h1>New Client</h1>
+     	<h1>New User</h1>
 	    
-	    <form method="post" th:action="@{/admin/client}" th:object="${client}">
+	    <form method="post" th:action="@{/admin/user}" th:object="${user}">
 	    
 		    <table class="table">
 		    	<tr>
-		    		<th scope="row">client_id</th>
-		    		<td><input class="form-control" type="text" th:field="*{client_id}" id="client_id" placeholder="Client ID"></td>
+		    		<th scope="row">username</th>
+		    		<td><input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Username"></td>
 		    	</tr>
-		    	<tr>
-		    		<th scope="row">resource_ids</th>
-		    		<td><input class="form-control" type="text" th:field="*{resource_ids}" id="resource_ids" placeholder="Resource IDs"></td>
-		    	</tr>
-		    	<tr>
-		     		<th scope="row">scope</th>
-		     		<td><input class="form-control" type="text" th:field="*{scope}" id="scope" placeholder="Scope"></td>
-		     	</tr>
 		     	<tr>
-		     		<th scope="row">authorized_grant_types</th>
-		     		<td><input class="form-control" type="text" th:field="*{authorized_grant_types}" id="authorized_grant_types" placeholder="Authorized Grant Types"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="row">web_server_redirect_uri</th>
-		     		<td><input class="form-control" type="text" th:field="*{web_server_redirect_uri}" id="web_server_redirect_uri" placeholder="Web Server Redirect URI"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="col">authorities</th>
-		     		<td><input class="form-control" type="text" th:field="*{authorities}" id="authorities" placeholder="Authorities"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="col">access_token_validity</th>
-		     		<td><input class="form-control" type="text" th:field="*{access_token_validity}" id="access_token_validity" placeholder="Access Token Validity"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="col">refresh_token_validity</th>
-		     		<td><input class="form-control" type="text" th:field="*{refresh_token_validity}" id="refresh_token_validity" placeholder="Refresh Token Validity"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="col">additional_information</th>
-		     		<td><input class="form-control" type="text" th:field="*{additional_information}" id="additional_information" placeholder="Additional Information"></td>
-		     	</tr>
-		     	<tr>
-		     		<th scope="col">autoapprove</th>
-		     		<td><input class="form-control" type="text" th:field="*{autoapprove}" id="autoapprove" placeholder="Autoapprove"></td>
+		     		<th scope="row">enabled</th>
+		     		<td><input class="form-control" type="text" th:field="*{enabled}" id="enabled" placeholder="Enabled?"></td>
 		     	</tr>
 		     </table>
 		     <button class="btn btn-primary" type="submit">Save</button>

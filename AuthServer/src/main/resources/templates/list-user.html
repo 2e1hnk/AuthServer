@@ -25,19 +25,31 @@
 	     		<tr>
 		     		<th scope="col">username</th>
 		     		<th scope="col">enabled</th>
-		     		<th scope="col">actions</th>
+		     		<th scope="col"></th>
 		     	</tr>
 	     	</thead>
 	     	<tbody>
 	     		<tr th:each="user : ${users}">
 	            	<td scope="row" th:text="${user.username}"></td>
 	                <td th:text="${user.enabled}"></td>
-	                <td><a th:href="@{client/{id}(id=${user.username})}">More Info</a>
-	                <a th:href="@{client/{id}/edit(id=${user.username})}">Edit</a>
-	                <a th:href="@{client/{id}/delete(id=${user.username})}">Delete</a></td>
+	                <td align="right">
+		                <div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    Actions
+						  </button>
+						  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					        <a class="dropdown-item" th:href="@{user/{id}(id=${user.username})}">More Info</a>
+			                <a class="dropdown-item" th:href="@{user/{id}/edit(id=${user.username})}">Edit</a>
+			                <a class="dropdown-item" th:href="@{user/{id}/delete(id=${user.username})}">Delete</a>
+	                	  </div>
+						</div>
+	                </td>
 	            </tr>
 	     	</tbody>
 	     </table>
      </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	</body>
 </html>
