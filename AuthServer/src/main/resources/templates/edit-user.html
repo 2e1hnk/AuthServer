@@ -9,23 +9,30 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body>
-  
   	<nav th:replace="fragments.html :: navbar"></nav>
-     	
-    <div class="container">
      
-     	<h1>New User</h1>
+     
+     <div class="container">
+     
+     	<h1 th:text="${user.username}" />
+     	
+     	<a class="btn btn-primary" th:href="@{/edit/{id}(id=${user.username})}">Edit</a>
+	    <a class="btn btn-primary" th:href="@{/delete/{id}(id=${user.username})}">Delete</a>
 	    
-	    <form method="post" th:action="@{/admin/user}" th:object="${user}">
+	    <form method="post" th:action="@{/admin/user/{id}/update(id=${user.username})}" th:object="${user}">
 	    
 		    <table class="table">
 		    	<tr>
 		    		<th scope="row">username</th>
-		    		<td><input class="form-control" type="text" th:field="*{username}" id="username" placeholder="Username"></td>
+		    		<td th:text="${user.username}" />
 		    	</tr>
-		     	<tr>
+		    	<tr>
+		     		<th scope="row">password</th>
+		     		<td th:text="${user.password}" />
+		     	</tr>
+		    	<tr>
 		     		<th scope="row">enabled</th>
-		     		<td><input class="form-control" type="text" th:field="*{enabled}" id="enabled" placeholder="Enabled?"></td>
+		     		<td><input class="form-control" type="text" th:field="*{enabled}" id="enabled" placeholder="Enabled"></td>
 		     	</tr>
 		     </table>
 		     <button class="btn btn-primary" type="submit">Save</button>

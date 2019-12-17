@@ -11,7 +11,7 @@
   <body>
   	<nav th:replace="fragments.html :: navbar"></nav>
      <div class="container">
-     <h1>Client Management</h1>
+     <h1>Client List</h1>
      
      <a class="btn btn-primary" th:href="@{/admin/new-client}">New</a>
      
@@ -22,11 +22,13 @@
      </div>
 	     <table class="table">
 	     	<thead class="thead-dark">
-	     		<th scope="col">client_id</th>
-	     		<th scope="col">scope</th>
-	     		<th scope="col">authorized_grant_types</th>
-	     		<th scope="col">autoapprove</th>
-	     		<th scopt="col">actions</th>
+	     		<tr>
+		     		<th scope="col">client_id</th>
+		     		<th scope="col">scope</th>
+		     		<th scope="col">authorized_grant_types</th>
+		     		<th scope="col">autoapprove</th>
+		     		<th scope="col">actions</th>
+		     	</tr>
 	     	</thead>
 	     	<tbody>
 	     		<tr th:each="client : ${clients}">

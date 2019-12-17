@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(path = "/admin")
-public class ClientController {
+public class ClientAdminController {
 	
 	@Autowired ClientRepository clientRepository;
 	
@@ -50,7 +50,7 @@ public class ClientController {
     @GetMapping("/client")
     public String showClientList(Model model) {
     	model.addAttribute("clients", clientRepository.findAll());
-        return "clients-list";
+        return "list-client";
     }
      
     @GetMapping("/new-client")
@@ -105,7 +105,7 @@ public class ClientController {
         model.addAttribute("client_secret", client_secret);
         
         model.addAttribute("clients", clientRepository.findAll());
-        return "clients-list";
+        return "list-client";
     }
     
 }

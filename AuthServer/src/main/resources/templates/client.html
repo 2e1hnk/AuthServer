@@ -27,7 +27,7 @@
 		    	</tr>
 		    	<tr>
 		    		<th scope="row">resource_ids</th>
-		    		<td><input type="text" th:field="*{resource_ids}" id="resource_ids" placeholder="Resource IDs"></td>
+		    		<td th:text="${client.resource_ids}" />
 		    	</tr>
 		    	<tr>
 		     		<th scope="row">client_secret</th>
@@ -35,7 +35,7 @@
 		     	</tr>
 		    	<tr>
 		     		<th scope="row">scope</th>
-		     		<td><input type="text" th:field="*{scope}" id="scope" placeholder="Scope"></td>
+		     		<td th:text="${client.scope}" />
 		     	</tr>
 		     	<tr>
 		     		<th scope="row">authorized_grant_types</th>
