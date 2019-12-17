@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Clients</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+     <nav th:replace="fragments.html :: navbar"></nav>
+     
+     <div class="container">
+     
+     		<h1 th:text="${client.client_id}" />
+     	
+     	<a class="btn btn-primary" th:href="@{{id}/edit(id=${client.client_id})}">Edit</a>
+	    <a class="btn btn-primary" th:href="@{{id}/delete(id=${client.client_id})}">Delete</a>
+	    
+	    <form method="post" th:action="@{~/admin/client/{id}/update(id=${client.client_id})}" th:object="${client}">
+	            
+		    <table class="table">
+		    	<tr>
+		    		<th scope="row">client_id</th>
+		    		<td th:text="${client.client_id}" />
+		    	</tr>
+		    	<tr>
+		    		<th scope="row">resource_ids</th>
+		    		<td><input type="text" th:field="*{resource_ids}" id="resource_ids" placeholder="Resource IDs"></td>
+		    	</tr>
+		    	<tr>
+		     		<th scope="row">client_secret</th>
+		     		<td th:text="${client.client_secret}"></td>
+		     	</tr>
+		    	<tr>
+		     		<th scope="row">scope</th>
+		     		<td><input type="text" th:field="*{scope}" id="scope" placeholder="Scope"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="row">authorized_grant_types</th>
+		     		<td th:text="${client.authorized_grant_types}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="row">web_server_redirect_uri</th>
+		     		<td th:text="${client.web_server_redirect_uri}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">authorities</th>
+		     		<td th:text="${client.authorities}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">access_token_validity</th>
+		     		<td th:text="${client.access_token_validity}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">refresh_token_validity</th>
+		     		<td th:text="${client.refresh_token_validity}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">additional_information</th>
+		     		<td th:text="${client.additional_information}"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">autoapprove</th>
+		     		<td th:text="${client.autoapprove}"></td>
+		     	</tr>
+		     </table>
+	     
+	     </form>
+     </div>
+	</body>
+</html>

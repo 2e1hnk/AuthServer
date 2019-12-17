@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Clients</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+  	<nav th:replace="fragments.html :: navbar"></nav>
+     <div class="container">
+     <h1>Client Management</h1>
+     
+     <a class="btn btn-primary" th:href="@{/admin/new-client}">New</a>
+     
+     <div th:if="${client_secret != null}" class="alert alert-success" role="alert">
+     	<h4>Created Client</h4>
+     	<hr />
+     	Client secret set to: <code><span th:text="${client_secret}">[secret]</span></code>. Make sure you make a note of this, it won't be shown again and it is not possible to retrieve it from the server.
+     </div>
+	     <table class="table">
+	     	<thead class="thead-dark">
+	     		<th scope="col">client_id</th>
+	     		<th scope="col">scope</th>
+	     		<th scope="col">authorized_grant_types</th>
+	     		<th scope="col">autoapprove</th>
+	     		<th scopt="col">actions</th>
+	     	</thead>
+	     	<tbody>
+	     		<tr th:each="client : ${clients}">
+	            	<td scope="row" th:text="${client.client_id}"></td>
+	                <td th:text="${client.scope}"></td>
+	                <td th:text="${client.authorized_grant_types}"></td>
+	                <td th:text="${client.autoapprove}"></td>
+	                <td><a th:href="@{client/{id}(id=${client.client_id})}">More Info</a>
+	                <a th:href="@{client/{id}/edit(id=${client.client_id})}">Edit</a>
+	                <a th:href="@{client/{id}/delete(id=${client.client_id})}">Delete</a></td>
+	            </tr>
+	     	</tbody>
+	     </table>
+     </div>
+	</body>
+</html>
