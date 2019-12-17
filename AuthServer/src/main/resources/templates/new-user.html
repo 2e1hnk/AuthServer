@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Clients</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+  <body>
+  
+  	<nav th:replace="fragments.html :: navbar"></nav>
+     	
+    <div class="container">
+     
+     	<h1>New Client</h1>
+	    
+	    <form method="post" th:action="@{/admin/client}" th:object="${client}">
+	    
+		    <table class="table">
+		    	<tr>
+		    		<th scope="row">client_id</th>
+		    		<td><input class="form-control" type="text" th:field="*{client_id}" id="client_id" placeholder="Client ID"></td>
+		    	</tr>
+		    	<tr>
+		    		<th scope="row">resource_ids</th>
+		    		<td><input class="form-control" type="text" th:field="*{resource_ids}" id="resource_ids" placeholder="Resource IDs"></td>
+		    	</tr>
+		    	<tr>
+		     		<th scope="row">scope</th>
+		     		<td><input class="form-control" type="text" th:field="*{scope}" id="scope" placeholder="Scope"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="row">authorized_grant_types</th>
+		     		<td><input class="form-control" type="text" th:field="*{authorized_grant_types}" id="authorized_grant_types" placeholder="Authorized Grant Types"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="row">web_server_redirect_uri</th>
+		     		<td><input class="form-control" type="text" th:field="*{web_server_redirect_uri}" id="web_server_redirect_uri" placeholder="Web Server Redirect URI"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">authorities</th>
+		     		<td><input class="form-control" type="text" th:field="*{authorities}" id="authorities" placeholder="Authorities"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">access_token_validity</th>
+		     		<td><input class="form-control" type="text" th:field="*{access_token_validity}" id="access_token_validity" placeholder="Access Token Validity"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">refresh_token_validity</th>
+		     		<td><input class="form-control" type="text" th:field="*{refresh_token_validity}" id="refresh_token_validity" placeholder="Refresh Token Validity"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">additional_information</th>
+		     		<td><input class="form-control" type="text" th:field="*{additional_information}" id="additional_information" placeholder="Additional Information"></td>
+		     	</tr>
+		     	<tr>
+		     		<th scope="col">autoapprove</th>
+		     		<td><input class="form-control" type="text" th:field="*{autoapprove}" id="autoapprove" placeholder="Autoapprove"></td>
+		     	</tr>
+		     </table>
+		     <button class="btn btn-primary" type="submit">Save</button>
+		</form>
+     </div>
+	</body>
+</html>
