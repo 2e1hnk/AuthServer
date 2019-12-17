@@ -21,56 +21,10 @@
 }</style>
 </head>
 <body>
-	<nav th:replace="fragments.html :: navbar"></nav>
 	<div class="container">
-		<div class="jumbotron jumbotron-fluid">
-		  <div class="container">
-		    <h1 class="display-4">AuthServer</h1>
-		    <p class="lead">&nbsp;</p>
-		  </div>
-		</div>
-		<div class="row">
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Add User</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Add a new user to the Auth Server.</p>
-					    <a th:href="@{/admin/new-user}" class="card-link">Start...</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Manage Users</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Manage existing users</p>
-					    <a th:href="@{/admin/user}" class="card-link">Start...</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Add App</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Add a new app to the Auth Server.</p>
-					    <a th:href="@{/admin/new-client}" class="card-link">Start...</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Manage Apps</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Manage connected apps</p>
-					    <a th:href="@{/admin/client}" class="card-link">Start...</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		You are logged in
+		<a class="btn btn-primary" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
+		<a class="btn btn-primary" th:href="@{/logout}">Logout</a>
 	</div>
 </body>
 </html>
