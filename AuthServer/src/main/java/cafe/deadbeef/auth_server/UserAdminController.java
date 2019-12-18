@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -92,19 +92,36 @@ public class UserAdminController {
     }
      
     @PostMapping("/user")
-    public String addUser(@ModelAttribute User user, BindingResult result, Model model) {
+    public RedirectView addUser(@ModelAttribute User user, BindingResult result, RedirectAttributes redir) {
         if (result.hasErrors()) {
-            return "new-user";
+            return new RedirectView("/admin/new-user",true);
         }
         
-        String password = RandomStringUtils.randomAlphabetic(20);
+        String password = RandomStringUtils.randomAlphanumeric(8);
         
         user.setPassword(passwordEncoder.encode(password));
          
         userRepository.save(user);
-        model.addAttribute("password", password);
         
-        return "redirect:/admin/user";
+        // Grant the user the USER role
+        userRepository.grantRole(user.getUsername(), "ROLE_USER");
+        
+        redir.addFlashAttribute("password", password);
+        
+        return new RedirectView("/admin/user",true);
+    }
+    
+    @GetMapping("/user/{user}/reset-password")
+    public RedirectView resetPassword(@PathVariable User user, RedirectAttributes redir) {
+    	String password = RandomStringUtils.randomAlphanumeric(8);
+        
+        user.setPassword(passwordEncoder.encode(password));
+         
+        userRepository.save(user);
+        
+        redir.addFlashAttribute("password", password);
+        
+        return new RedirectView("/admin/user",true);
     }
     
 }

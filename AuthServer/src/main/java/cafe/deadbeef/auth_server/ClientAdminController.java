@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping(path = "/admin")
@@ -92,20 +94,22 @@ public class ClientAdminController {
     }
      
     @PostMapping("/client")
-    public String addClient(@ModelAttribute Client client, BindingResult result, Model model) {
+    public RedirectView addClient(@ModelAttribute Client client, BindingResult result, RedirectAttributes redir) {
         if (result.hasErrors()) {
-            return "new-client";
+        	return new RedirectView("/admin/new-client",true);
         }
         
-        String client_secret = RandomStringUtils.randomAlphabetic(20);
+        // NOTE: using alphanumeric rather than ascii to avoid potential issues
+        // with special characters. It is quite long though!
+        String client_secret = RandomStringUtils.randomAlphanumeric(40);
         
         client.setClient_secret(passwordEncoder.encode(client_secret));
          
         clientRepository.save(client);
-        model.addAttribute("client_secret", client_secret);
         
-        model.addAttribute("clients", clientRepository.findAll());
-        return "list-client";
+        redir.addFlashAttribute("client_secret", client_secret);
+        
+        return new RedirectView("/admin/client",true);
     }
     
 }
