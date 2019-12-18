@@ -1,8 +1,6 @@
 package cafe.deadbeef.auth_server;
 
 import java.security.Principal;
-import java.util.Optional;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,6 @@ public class UserController {
     @RequestMapping("/me")
     @ResponseBody
     public Principal user(Principal principal) {
-        System.out.println(principal);
         return principal;
     }
     

@@ -23,6 +23,7 @@
 	    	    
       	<a class="btn btn-lg btn-block btn-primary" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
 		<a class="btn btn-lg btn-block btn-primary" th:href="@{/user/change-password}">Change Password</a>
+		<a class="btn btn-lg btn-block btn-primary" th:href="@{/user/me}">View Token</a>
 		<a class="btn btn-lg btn-block btn-primary" th:href="@{/logout}">Logout</a>
 	</div>
 </body>
