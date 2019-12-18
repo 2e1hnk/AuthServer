@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Clients</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  </head>
+<head th:replace="fragments :: head('Edit Client')"></head>
   <body>
   	<nav th:replace="fragments.html :: navbar"></nav>
+    
+    <div th:replace="fragments :: title(page_title=${client.client_id})" />
      
-     
-     <div class="container">
-     
-     	<h1 th:text="${client.client_id}" />
-     	
-     	<a class="btn btn-primary" th:href="@{/edit/{id}(id=${client.client_id})}">Edit</a>
-	    <a class="btn btn-primary" th:href="@{/delete/{id}(id=${client.client_id})}">Delete</a>
-	    
+    <div class="container">
+	    <div class="btn-group">
+	     	<a class="btn btn-primary" th:href="@{/edit/{id}(id=${client.client_id})}">Edit</a>
+			<a class="btn btn-primary" th:href="@{/delete/{id}(id=${client.client_id})}">Delete</a>
+		</div>
+	</div>
+	
+	<div class="container">
+	
 	    <form method="post" th:action="@{~/auth-server/admin/client/{id}/update(id=${client.client_id})}" th:object="${client}">
 	    
 		    <table class="table">

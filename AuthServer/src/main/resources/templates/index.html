@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Clients</title>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
-<style>
-.jumbotron {
-  background-image: url("/auth-server/img/gorilla-rev.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-}</style>
-</head>
-<body>
-	<div class="container">
-		You are logged in
-		<a class="btn btn-primary" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
-		<a class="btn btn-primary" th:href="@{/logout}">Logout</a>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Manage</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link th:href="@{/css/style.css}" rel="stylesheet" crossorigin="anonymous"/>
+  </head>
+  <body>
+     <div class="container user-management">
+     	<div th:if="${error != null}" class="alert alert-error" role="alert">
+	   		<h4>Error:</h4>
+	    	<span th:text="${error}" />
+	    </div>
+	    
+		<div th:if="${success != null}" class="alert alert-success" role="alert">
+	   		<h4>Success:</h4>
+	    	<span th:text="${success}" />
+	    </div>
+	    	    
+      	<a class="btn btn-lg btn-block btn-primary" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
+		<a class="btn btn-lg btn-block btn-primary" th:href="@{/user/change-password}">Change Password</a>
+		<a class="btn btn-lg btn-block btn-primary" th:href="@{/logout}">Logout</a>
 	</div>
 </body>
 </html>

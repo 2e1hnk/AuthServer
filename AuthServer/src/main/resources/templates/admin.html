@@ -1,34 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<title>Clients</title>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	crossorigin="anonymous">
-<style>
-body {
-  background-image: url(https://www.nojitter.com/sites/default/files/abstract-3581182_1920.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-}
-.jumbotron {
-  background-color: rgba(255,255,255,0.25);
-  background-image: url("/auth-server/img/gorilla-rev.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right;
-}
-</style>
-</head>
-<body>
-	<nav th:replace="fragments.html :: navbar"></nav>
+<head th:replace="fragments :: head('Admin')"></head>
+<body class="background-image">
+	<nav th:replace="fragments :: navbar"></nav>
 	<div class="container">
 		<div class="jumbotron jumbotron-fluid">
 		  <div class="container">
@@ -36,45 +10,45 @@ body {
 		    <p class="lead">&nbsp;</p>
 		  </div>
 		</div>
-		<div class="row">
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Add User</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Add a new user to the Auth Server.</p>
-					    <a th:href="@{/admin/new-user}" class="card-link">Start...</a>
-					</div>
+		<div class="card-group">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Add User</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+				    <p class="card-text">Add a new user to the Auth Server.</p>
+				</div>
+				<div class="card-footer bg-transparent">
+				    <a class="btn btn-primary btn-block" th:href="@{/admin/new-user}">Start...</a>
 				</div>
 			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Manage Users</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Manage existing users</p>
-					    <a th:href="@{/admin/user}" class="card-link">Start...</a>
-					</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Users</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+				    <p class="card-text">Manage existing users</p>
+				</div>
+				<div class="card-footer bg-transparent">
+				    <a class="btn btn-primary btn-block" th:href="@{/admin/user}">Start...</a>
 				</div>
 			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Add App</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Add a new app to the Auth Server.</p>
-					    <a th:href="@{/admin/new-client}" class="card-link">Start...</a>
-					</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Add App</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+				    <p class="card-text">Add a new app to the Auth Server.</p>
+				</div>
+				<div class="card-footer bg-transparent">
+				    <a class="btn btn-primary btn-block" th:href="@{/admin/new-client}">Start...</a>
 				</div>
 			</div>
-			<div class="col-sm">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Manage Apps</h5>
-					    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-					    <p class="card-text">Manage connected apps</p>
-					    <a th:href="@{/admin/client}" class="card-link">Start...</a>
-					</div>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Manage Apps</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+				    <p class="card-text">Manage connected apps</p>
+				</div>
+				<div class="card-footer bg-transparent">
+				    <a class="btn btn-primary btn-block" th:href="@{/admin/client}">Start...</a>
 				</div>
 			</div>
 		</div>
