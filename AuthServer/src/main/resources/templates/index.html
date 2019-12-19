@@ -20,7 +20,7 @@
 	   		<h4>Success:</h4>
 	    	<span th:text="${success}" />
 	    </div>
-	    	    
+	   	<img class="img-fluid" th:src="@{https://app.deadbeef.cafe/avatar/face/{user}(user=${#authentication.getPrincipal().getUsername()})" />
       	<a class="btn btn-lg btn-block btn-primary" th:href="@{/admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
 		<a class="btn btn-lg btn-block btn-primary" th:href="@{/user/change-password}">Change Password</a>
 		<a class="btn btn-lg btn-block btn-primary" th:href="@{/user/me}">View Token</a>
