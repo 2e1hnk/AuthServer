@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login").permitAll()
 		.antMatchers("/oauth/token/revokeById/**").permitAll()
 		.antMatchers("/tokens/**").permitAll()
+		.antMatchers("/oauth/check_token").permitAll()
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll()
