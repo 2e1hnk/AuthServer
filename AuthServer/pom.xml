@@ -22,7 +22,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<oauth.version>2.3.5.RELEASE</oauth.version>
+		<oauth.version>2.3.6.RELEASE</oauth.version>
 		<jwt.version>1.0.10.RELEASE</jwt.version>
 		<oauth-autoconfig.version>2.1.0.RELEASE</oauth-autoconfig.version>
 
